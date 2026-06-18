@@ -11,7 +11,7 @@ const TestimonialsSection = () => {
         learning experience.
       </p>
 
-      <div className="">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
         {dummyTestimonial.map((testimonial, index) => (
           <div
             key={index}
@@ -30,26 +30,27 @@ const TestimonialsSection = () => {
                 </h1>
                 <p className="text-gray-800/80">{testimonial.role}</p>
               </div>
-              <div className="p-5 pb-7">
-                <div className="flex gap-0.5">
-                  {[
-                    ...Array(5).map((_, i) => (
-                      <img
-                        className="h-5"
-                        key={i}
-                        src={
-                          i < Math.floor(testimonial.rating)
-                            ? assets.star
-                            : assets.star_blank
-                        }
-                        alt=""
-                      />
-                    )),
-                  ]}
-                </div>
-                <p className="text-gray-500 mt-5">{testimonial.feedback}</p>
-              </div>
             </div>
+            <div className="p-5 pb-7">
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <img
+                    className="h-5"
+                    key={i}
+                    src={
+                      i < Math.floor(testimonial.rating)
+                        ? assets.star
+                        : assets.star_blank
+                    }
+                    alt=""
+                  />
+                ))}
+              </div>
+              <p className="text-gray-500 mt-5">{testimonial.feedback}</p>
+            </div>
+            <a href="#" className="text-blue-500 underline px-5">
+              Read More
+            </a>
           </div>
         ))}
       </div>
